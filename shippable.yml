@@ -1,0 +1,16 @@
+#language setting
+language: node_js
+
+# version numbers
+node_js:
+  - "0.10"
+
+env:
+  global:
+    - OPENSHIFT_REPO=ssh://57214f8d2d5271b9f4000008@halconservice-cein2016.rhcloud.com/~/git/halconservice.git/
+    
+before_install:
+  - git remote -v | grep ^openshift || git remote add -m master openshift $OPENSHIFT_REPO
+
+install:
+  - npm install
