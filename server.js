@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 // puerto del servidor
 // podra ser seteado como argumento en comando
-var port = process.env.OPENSHIFT_NODEJS_PORT || 3200;
+var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3200;
 
 // RUTAS de la API
 var router = express.Router();

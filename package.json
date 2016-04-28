@@ -1,5 +1,8 @@
 {
     "name": "Halcon-api",
+    "scripts": {
+      "start": "node server.js"
+      },
     "main": "server.js",
     "dependencies": {
         "express": "~4.0.0",
