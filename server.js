@@ -1,7 +1,30 @@
-var express = require('express');
-var app = express(); // Instancia del servidor express
-var bodyParser = require('body-parser');
+var express 	= require('express');
+var app 		= express(); // Instancia del servidor express
+var bodyParser 	= require('body-parser');
+var mongoose 	= require('mongoose');
 
+var url = '127.0.0.1:27017' + process.env.OPENSHIFT_APP_NAME;
+
+if(process.env.OPENSHIFT_MONGODB_URL){
+	url = process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME;
+}
+
+var connect function(){
+	mongoose.connect(url);
+};
+
+connect();
+
+var db = mongoose.connection;
+
+db.on('error', function(error){
+	console.log("ERROR"+error);
+});
+
+db.on('disconnected', connect);
+
+//Connection URL: mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/
+//---mongoose.connect(process.env.MONDODB_URL + 'Personas', { db: { nativeParser: true } });
 // Configurar app para usar bodyParser
 // con este paquete obtendremos
 // los datos enviados por POST
