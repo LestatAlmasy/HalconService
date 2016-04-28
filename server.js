@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 
 // puerto del servidor
 // podra ser seteado como argumento en comando
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3200;
 
 // RUTAS de la API
@@ -24,5 +25,7 @@ router.get('/', function(req, res){
 app.use('/api', router);
 
 // Iniciar servidor
-app.listen(port);
+app.listen(port, ipaddress, function(){
+	console.log('La magia esta en el puerto ' + port);
+});
 console.log('La magia esta en el puerto ' + port);
