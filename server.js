@@ -57,6 +57,27 @@ router.route("/users")
         });
     });
 
+router.route("/login")
+    .post(function(req, res){
+        var db = new mongoOp();
+        var response = {};
+
+        var userEnviado = req.body.user;
+        var passEnviado =   require('crypto')
+                            .createHash('sha1')
+                            .update(req.body.pass)
+                            .digest('base64');
+
+        db.collection('usuarios').find({"user": userEnviado, "pass": passEnviado}, function(err, data){
+            if(err){
+                response = {"error" : "true", "message": "Error procesando"};
+            }else{
+                response = {"error" : "false", "message": data};
+            }
+            res.json(response);
+        });
+    });
+
 router.route("/users/:id")
     .get(function(req,res){
         var response = {};

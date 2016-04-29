@@ -8,10 +8,15 @@ mongoose.connect('mongodb://'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.
 var Schema = mongoose.Schema;
 
 var usuarioSchema = new Schema({
-	user: 	{ type: String},
-	pass: 	{ type: String}
+	user: 			{ type: String  },
+	pass: 			{ type: String  },
+	nombre: 		{ type: String  },
+	apellidos: 		{ type: String  },
+	nivelMlitar: 	{ type: String  },
+	edad: 			{ type: Number  },
+	habilitado: 	{ type: Boolean }
 });
 
-console.log('PASE POR AQUI JIJI');
+console.log('SCHEMA CREADO');
 
 module.exports = mongoose.model('Usuario', usuarioSchema);
