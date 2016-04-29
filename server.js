@@ -34,7 +34,7 @@ mongoose.connect('mongodb://'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.
 	if(err){
 		console.log('ERROR:'+err);
 	}else{
-		console.log('todo ok mami');
+		console.log('todo ok mami ok');
 	}
 	// Iniciar servidor
 	app.listen(port, ipaddress, function(){
