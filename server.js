@@ -114,15 +114,15 @@ router.route("/users/:id")
 app.use('/api', router);
 
 
-mongoose.connect('mongodb://'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/'+'halconservice', function(err, res){
-	if(err){
-		console.log('ERROR:'+err);
-	}else{
-		console.log('todo ok mami ok');
-	}
-	// Iniciar servidor
-	app.listen(port, ipaddress, function(){
-		console.log('La magia esta en el puerto ' + port);
-	});
-	//console.log('La magia esta en el puerto ' + port);
+//mongoose.connect('mongodb://'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/'+'halconservice', function(err, res){
+//	if(err){
+//		console.log('ERROR:'+err);
+//	}else{
+//		console.log('todo ok mami ok');
+//	}
+// Iniciar servidor
+app.listen(port, ipaddress, function(){
+	console.log('La magia esta en el puerto ' + port);
 });
+	//console.log('La magia esta en el puerto ' + port);
+//});
