@@ -19,4 +19,4 @@ var usuarioSchema = new Schema({
 
 console.log('SCHEMA CREADO');
 
-module.exports = mongoose.model('Usuario', usuarioSchema);
+module.exports = mongoose.model('UsuarioFinal', usuarioSchema);
