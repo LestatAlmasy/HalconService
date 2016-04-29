@@ -11,7 +11,7 @@ var mongoOp     = require("./models/usuario");
 // Configurar app para usar bodyParser
 // con este paquete obtendremos
 // los datos enviados por POST
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
 // puerto del servidor
@@ -43,7 +43,10 @@ router.route("/users")
         var db = new mongoOp();
         var response = {};
         db.user = req.body.user;
-        db.pass = require('crypto').createHash('sha1').update(req.body.pass).digest('base64');
+        db.pass = 	require('crypto')
+        		  	.createHash('sha1')
+        		  	.update(req.body.pass)
+        		  	.digest('base64');
         db.save(function(err){
             if(err) {
                 response = {"error" : true,"message" : "Error adding data"};
@@ -111,7 +114,7 @@ router.route("/users/:id")
 app.use('/api', router);
 
 
-mongoose.connect('mongodb://'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/', function(err, res){
+mongoose.connect('mongodb://'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/'+'halconservice', function(err, res){
 	if(err){
 		console.log('ERROR:'+err);
 	}else{
