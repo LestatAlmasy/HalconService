@@ -23,7 +23,7 @@ var router = express.Router();
 
 // ruta para probar nuestro servidor
 router.get('/', function(req, res){
-    res.json({message: 'Ándale, arriba arriba, yepa yepa'});
+    res.json({message: 'MIRON! sale de aqui'});
 });
 
 // Registrar las rutas con prefijo /api
@@ -33,6 +33,8 @@ app.use('/api', router);
 mongoose.connect('mongodb://'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/', function(err, res){
 	if(err){
 		console.log('ERROR:'+err);
+	}else{
+		console.log('todo ok mami');
 	}
 	// Iniciar servidor
 	app.listen(port, ipaddress, function(){
