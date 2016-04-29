@@ -47,6 +47,11 @@ router.route("/users")
         		  	.createHash('sha1')
         		  	.update(req.body.pass)
         		  	.digest('base64');
+        db.nombre = req.body.nombre;
+        db.apellidos = req.body.apellidos;
+        db.nivelMlitar = req.body.nivelMlitar;
+        db.edad = req.body.edad;
+        eb.habilitado = req.body.habilitado;
         db.save(function(err){
             if(err) {
                 response = {"error" : true,"message" : "Error adding data"};
