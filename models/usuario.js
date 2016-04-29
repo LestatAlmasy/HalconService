@@ -1,4 +1,4 @@
-var mongoose = requiere('mongoose');
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/');
 var Schema = mongoose.Schema;
 
