@@ -3,6 +3,7 @@ var app 		= express(); // Instancia del servidor express
 var bodyParser 	= require('body-parser');
 var mongoose 	= require('mongoose');
 
+//mongoose.connect('mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/');
 
 //Connection URL: mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/
 //---mongoose.connect(process.env.MONDODB_URL + 'Personas', { db: { nativeParser: true } });
@@ -28,8 +29,14 @@ router.get('/', function(req, res){
 // Registrar las rutas con prefijo /api
 app.use('/api', router);
 
-// Iniciar servidor
-app.listen(port, ipaddress, function(){
-	console.log('La magia esta en el puerto ' + port);
+
+mongoose.connect('mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/', function(err, res){
+	if(err){
+		console.log('ERROR:'+err);
+	}
+	// Iniciar servidor
+	app.listen(port, ipaddress, function(){
+		console.log('La magia esta en el puerto ' + port);
+	});
+	//console.log('La magia esta en el puerto ' + port);
 });
-console.log('La magia esta en el puerto ' + port);
