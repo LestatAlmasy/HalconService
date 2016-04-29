@@ -49,7 +49,7 @@ router.route("/users")
         		  	.digest('base64');
         db.nombre = req.body.nombre;
         db.apellidos = req.body.apellidos;
-        db.nivelMlitar = req.body.nivelMlitar;
+        db.nivelMilitar = req.body.nivelMilitar;
         db.edad = req.body.edad;
         eb.habilitado = req.body.habilitado;
         db.save(function(err){

@@ -12,9 +12,9 @@ var usuarioSchema = new Schema({
 	pass: 			{ type: String  },
 	nombre: 		{ type: String  },
 	apellidos: 		{ type: String  },
-	nivelMlitar: 	{ type: String  },
-	edad: 			{ type: Number  },
-	habilitado: 	{ type: Boolean }
+	nivelMilitar: 	{ type: String  },
+	edad: 			{ type: String  },
+	habilitado: 	{ type: String  }
 });
 
 console.log('SCHEMA CREADO');
