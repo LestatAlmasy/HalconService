@@ -73,7 +73,7 @@ router.route("/login")
                             .update(req.body.pass)
                             .digest('base64');
 
-        db.collection('UsuarioFinal').find({"user": userEnviado, "pass": passEnviado}, function(err, data){
+        mongoOp.find({"user": userEnviado, "pass": passEnviado}, function(err, data){
             if(err){
                 response = {"error" : "true", "message": "Error procesando"};
             }else{
