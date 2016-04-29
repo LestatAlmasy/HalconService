@@ -42,8 +42,8 @@ router.route("/users")
     .post(function(req,res){
         var db = new mongoOp();
         var response = {};
-        db.user = req.body.email;
-        db.pass = require('crypto').createHash('sha1').update(req.body.password).digest('base64');
+        db.user = req.body.user;
+        db.pass = require('crypto').createHash('sha1').update(req.body.pass).digest('base64');
         db.save(function(err){
             if(err) {
                 response = {"error" : true,"message" : "Error adding data"};
