@@ -51,7 +51,7 @@ router.route("/users")
         db.apellidos = req.body.apellidos;
         db.nivelMilitar = req.body.nivelMilitar;
         db.edad = req.body.edad;
-        eb.habilitado = req.body.habilitado;
+        db.habilitado = req.body.habilitado;
         db.save(function(err){
             if(err) {
                 response = {"error" : true,"message" : "Error adding data"};
