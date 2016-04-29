@@ -30,7 +30,7 @@ router.get('/', function(req, res){
 app.use('/api', router);
 
 
-mongoose.connect('mongodb://'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+$process.env.OPENSHIFT_MONGODB_DB_PORT+'/', function(err, res){
+mongoose.connect('mongodb://'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/', function(err, res){
 	if(err){
 		console.log('ERROR:'+err);
 	}
