@@ -17,3 +17,5 @@ var eventoSchema = new Schema({
 console.log('SCHEMA event CREADO');
 
 module.exports = mongoose.model('EventoFinal', eventoSchema);
+
+mongoose.disconnect();
