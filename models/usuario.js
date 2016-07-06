@@ -18,6 +18,6 @@ var usuarioSchema = new Schema({
 	habilitado: 	{ type: Boolean  }
 });
 
-console.log('SCHEMA CREADO');
+console.log('SCHEMA user CREADO');
 
 module.exports = mongoose.model('UsuarioFinal', usuarioSchema);

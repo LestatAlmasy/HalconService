@@ -14,6 +14,6 @@ var eventoSchema = new Schema({
 	descripcion: 	{ type: String 	}
 });
 
-console.log('SCHEMA CREADO');
+console.log('SCHEMA event CREADO');
 
 module.exports = mongoose.model('EventoFinal', eventoSchema);
