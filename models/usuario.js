@@ -7,14 +7,15 @@ var options = {
 mongoose.connect('mongodb://'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/'+'halconservice', options);
 var Schema = mongoose.Schema;
 
+
 var usuarioSchema = new Schema({
 	user: 			{ type: String  },
 	pass: 			{ type: String  },
 	nombre: 		{ type: String  },
 	apellidos: 		{ type: String  },
 	nivelMilitar: 	{ type: String  },
-	edad: 			{ type: String  },
-	habilitado: 	{ type: String  }
+	edad: 			{ type: Number  },
+	habilitado: 	{ type: Boolean  }
 });
 
 console.log('SCHEMA CREADO');

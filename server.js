@@ -3,6 +3,7 @@ var app 		= express(); // Instancia del servidor express
 var bodyParser 	= require('body-parser');
 var mongoose 	= require('mongoose');
 var mongoOp     = require("./models/usuario");
+var mongoOp2    = require("./models/evento");
 
 //mongoose.connect('mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/');
 
@@ -27,6 +28,7 @@ router.get('/', function(req, res){
     res.json({message: 'MIRON! sale de aqui'});
 });
 
+/* Esto es para usuarios */
 router.route("/users")
     .get(function(req,res){
         var response = {};
@@ -136,6 +138,19 @@ router.route("/users/:id")
         });
     })
 
+/* Esto es para eventos */
+router.route("/events")
+    .get(function(req,res){
+        var response = {};
+        mongoOp2.find({}, function(err,data){
+            if(err){
+                response = {"error" : true, "message" : "Error fetching data"};
+            }else{
+                response = {"error" : false, "message" : data};
+            }
+            res.json(response);
+        });
+    });
 // Registrar las rutas con prefijo /api
 app.use('/api', router);
 
