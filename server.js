@@ -142,6 +142,7 @@ router.route("/users/:id")
 router.route("/events")
     .get(function(req,res){
         var response = {};
+        console.log('pase por events...');
         mongoOp2.find({}, function(err,data){
             if(err){
                 response = {"error" : true, "message" : "Error fetching data"};
