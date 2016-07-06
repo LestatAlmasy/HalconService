@@ -13,7 +13,7 @@ var usuarioSchema = new Schema({
 	pass: 			{ type: String  },
 	nombre: 		{ type: String  },
 	apellidos: 		{ type: String  },
-	nivelMilitar: 	{ type: String  },
+	nivelMilitar: 	{ type: String, enum: ['soldado','oficial','capitan','general']  },
 	edad: 			{ type: Number  },
 	habilitado: 	{ type: Boolean  }
 });

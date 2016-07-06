@@ -9,7 +9,7 @@ var Schema = mongoose.Schema;
 
 
 var eventoSchema = new Schema({
-	//fecha: 			{ type: Date, default: Date.now }, 
+	fecha: 			{ type: Date, default: Date.now }, 
 	categoria: 		{ type: String, enum: ['info','error','warning']	}, /* info, error, warning*/
 	descripcion: 	{ type: String 	}
 });

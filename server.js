@@ -151,6 +151,20 @@ router.route("/events")
             }
             res.json(response);
         });
+    })
+    .post(function(req,res){
+        var db = new mongoOp2();
+        var response = {};
+        db.categoria = req.body.categoria;
+        db.descripcion = req.body.descripcion;
+        db.save(function(err){
+            if(err){
+                response = {"error" : true, "message" : "Error adding data"};
+            }else{
+                response = {"error" : false, "message" : "Data added"};
+            }
+            res.json(response);
+        });
     });
 // Registrar las rutas con prefijo /api
 app.use('/api', router);
