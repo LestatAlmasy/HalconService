@@ -1,3 +1,59 @@
+var express         = require("express"),
+    app             = express(),
+    bodyParser      = require("body-parser"),
+    methodOverride  = require("method-override"),
+    mongoose        = require('mongoose');
+
+var options = {
+  user: process.env.OPENSHIFT_MONGODB_DB_USERNAME,
+  pass: process.env.OPENSHIFT_MONGODB_DB_PASSWORD
+}
+// Connection to DB
+mongoose.connect('mongodb://'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/'+'halconservice',options);
+
+// Middlewares
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(methodOverride());
+
+// Import Models and controllers
+var models     = require('./models/evento')(app, mongoose);
+var EventCtrl = require('./controllers/events');
+
+// Example Route
+var router = express.Router();
+router.get('/', function(req, res) {
+  res.send("Hello world!");
+});
+app.use(router);
+
+// API routes
+var events = express.Router();
+
+events.route('/events')
+  .get(EventCtrl.findAllEvents)
+  .post(EventCtrl.addEvent);
+
+events.route('/events/:id')
+  .get(EventCtrl.findById)
+  .put(EventCtrl.updateEvent)
+  .delete(EventCtrl.deleteEvent);
+
+app.use('/api', events);
+
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3200;
+
+app.listen(port, ipaddress, function(){
+  console.log('La magia esta en el puerto ' + port);
+});
+
+
+
+
+
+
+/*)
 var express 	= require('express');
 var app 		= express(); // Instancia del servidor express
 var bodyParser 	= require('body-parser');
@@ -5,6 +61,7 @@ var mongoose 	= require('mongoose');
 var mongoOp     = require("./models/usuario");
 var mongoOp2    = require("./models/evento");
 
+*/
 //mongoose.connect('mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/');
 
 //Connection URL: mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/
@@ -17,6 +74,7 @@ app.use(bodyParser.json());
 
 // puerto del servidor
 // podra ser seteado como argumento en comando
+/*
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3200;
 
@@ -27,8 +85,9 @@ var router = express.Router();
 router.get('/', function(req, res){
     res.json({message: 'MIRON! sale de aqui'});
 });
-
+*/
 /* Esto es para usuarios */
+/*
 router.route("/users")
     .get(function(req,res){
         var response = {};
@@ -138,7 +197,9 @@ router.route("/users/:id")
         });
     })
 
+*/
 /* Esto es para eventos */
+/*
 router.route("/events")
     .get(function(req,res){
         var response = {};
@@ -182,3 +243,4 @@ app.listen(port, ipaddress, function(){
 });
 	//console.log('La magia esta en el puerto ' + port);
 //});
+*/
