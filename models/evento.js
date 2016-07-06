@@ -4,7 +4,7 @@ var options = {
   pass: process.env.OPENSHIFT_MONGODB_DB_PASSWORD
 }
 
-mongoose.connect('mongodb://'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/'+'halconservice', options);
+mongoose.createConnection('mongodb://'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/'+'halconservice', options);
 var Schema = mongoose.Schema;
 
 
